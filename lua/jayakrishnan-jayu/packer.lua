@@ -46,9 +46,11 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
+  
   use ("christoomey/vim-tmux-navigator")
 
- -- use( 'nvim-lualine/lualine.nvim')
+  use("terrortylor/nvim-comment")
 
-  use('ThePrimeagen/vim-be-good')
+ -- use ("olimorris/onedarkpro.nvim")
+ -- use( 'nvim-lualine/lualine.nvim')
 end)
