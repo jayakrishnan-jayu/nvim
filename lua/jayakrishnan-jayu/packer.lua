@@ -57,6 +57,10 @@ return require('packer').startup(function(use)
 
   use("terrortylor/nvim-comment")
 
+  use("lewis6991/gitsigns.nvim")
+
+  use ("TabbyML/vim-tabby")
+
  -- use ("olimorris/onedarkpro.nvim")
  -- use( 'nvim-lualine/lualine.nvim')
 end)
