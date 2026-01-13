@@ -17,6 +17,25 @@ vim.filetype.add({
     }
 })
 
+
+vim.cmd("au BufRead,BufNewFile *.templ setfiletype templ")
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd({ "BufEnter", "BufNewFile" }, {
+    pattern = { "templ" },
+    callback = function()
+        local buf = vim.api.nvim_get_current_buf()
+        vim.api.nvim_buf_set_option(buf, "filetype", "templ")
+    end,
+})
+
+autocmd('FileType', {
+    pattern = 'templ',
+    callback = function()
+        vim.treesitter.start()
+    end,
+})
+
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
@@ -28,7 +47,7 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
+autocmd({ "BufWritePre" }, {
     group = ThePrimeagenGroup,
     pattern = "*",
     callback = function()
@@ -59,4 +78,3 @@ autocmd('LspAttach', {
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
-
